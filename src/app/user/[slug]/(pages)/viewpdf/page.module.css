@@ -1,0 +1,179 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #f4f4f4;
+  gap: 20px;
+}
+
+.pdfContainer {
+  width: 100%;
+  /* margin-bottom: 20px; */
+}
+
+.detailsContainer {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.detailText {
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.description {
+  color: #666;
+  margin-top: 15px;
+}
+
+.commentSection {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.commentTitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  font-size: 14px;
+  min-height: 80px;
+}
+
+.button {
+  background-color: #16146b;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.commentsListContainer {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.commentList {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.commentItem {
+  background-color: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.commentUser {
+  margin-bottom: 4px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentDate {
+  color: #999;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.commentText {
+  color: #666;
+}
+
+.noComments {
+  color: #999;
+}
+
+.actionsContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actionButton {
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+}
+
+.backButton {
+  margin-top: 70px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #3498db;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.backButton:hover {
+  color: #2980b9;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .pdfContainer {
+    width: 65vw;
+  }
+
+  .detailsContainer {
+    width: 35vw;
+  }
+
+  .actionsContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .actionButton {
+    flex: 1;
+  }
+}

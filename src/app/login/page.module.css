@@ -1,0 +1,14 @@
+.logo {
+  width: 80%;
+  height: 200px;
+  background-image: url("/sipakde_full_colored.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    background-image: url("/sipakde_full_colored_mobile.png");
+  }
+}
