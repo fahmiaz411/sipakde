@@ -42,7 +42,7 @@ interface Document {
 const DocumentsList = () => {
   const router = useRouter(); // Initialize router
   const searchParams = useSearchParams();
-  const { userData } = useGlobalContext();
+  const { userData, innerWidth } = useGlobalContext();
 
   // State to track hover
   const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null);
@@ -119,61 +119,181 @@ const DocumentsList = () => {
       >
         <FaPlus size={20} color="#2c3e50" />
       </div>
-      <table style={tableStyle}>
-        <tbody>
-          {lists.length ? (
-            lists.map((pdf, index) => (
-              <tr
-                key={index}
-                onMouseEnter={() => setHoveredRowIndex(index)}
-                onMouseLeave={() => setHoveredRowIndex(null)}
-                onClick={() => handleRowClick(pdf)} // Add onClick handler
-              >
-                <td
-                  style={
-                    hoveredRowIndex === index ? tdStyleHovered : tdStyleBase
-                  }
+      {innerWidth > 768 ? (
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+          }}
+        >
+          <table style={{ ...tableStyle, margin: "0 10px" }}>
+            <tbody>
+              {lists.length ? (
+                lists.slice(0, -~(lists.length / 2)).map((pdf, index) => (
+                  <tr
+                    key={index}
+                    onMouseEnter={() => setHoveredRowIndex(index)}
+                    onMouseLeave={() => setHoveredRowIndex(null)}
+                    onClick={() => handleRowClick(pdf)} // Add onClick handler
+                  >
+                    <td
+                      style={
+                        hoveredRowIndex === index ? tdStyleHovered : tdStyleBase
+                      }
+                    >
+                      <div
+                        style={{
+                          ...tdItemStyle,
+                          ...tdStatus,
+                          backgroundColor: statusColor(pdf.status),
+                        }}
+                      >
+                        {mappingStatusText[pdf.status]}
+                      </div>
+                      <div // details
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          margin: "10px 0px",
+                        }}
+                      >
+                        <div>
+                          <div style={{ ...tdItemStyle, ...tdName }}>
+                            {pdf.project_name + " - " + pdf.name}
+                          </div>
+                          <div style={{ ...tdItemStyle, ...tdDate }}>
+                            {formatDate(pdf.date)}
+                          </div>
+                          <div style={{ ...tdItemStyle, ...tdFrom }}>
+                            {pdf.sender}
+                          </div>
+                        </div>
+                        <FaFilePdf color="red" size={50} />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td style={tdStyleBase}>Belum ada dokumen</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          <table style={{ ...tableStyle, margin: "0 10px" }}>
+            <tbody>
+              {lists.length ? (
+                lists.slice(-~(lists.length / 2)).map((pdf, index) => (
+                  <tr
+                    key={index}
+                    onMouseEnter={() => setHoveredRowIndex(index)}
+                    onMouseLeave={() => setHoveredRowIndex(null)}
+                    onClick={() => handleRowClick(pdf)} // Add onClick handler
+                  >
+                    <td
+                      style={
+                        hoveredRowIndex === index ? tdStyleHovered : tdStyleBase
+                      }
+                    >
+                      <div
+                        style={{
+                          ...tdItemStyle,
+                          ...tdStatus,
+                          backgroundColor: statusColor(pdf.status),
+                        }}
+                      >
+                        {mappingStatusText[pdf.status]}
+                      </div>
+                      <div // details
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          margin: "10px 0px",
+                        }}
+                      >
+                        <div>
+                          <div style={{ ...tdItemStyle, ...tdName }}>
+                            {pdf.project_name + " - " + pdf.name}
+                          </div>
+                          <div style={{ ...tdItemStyle, ...tdDate }}>
+                            {formatDate(pdf.date)}
+                          </div>
+                          <div style={{ ...tdItemStyle, ...tdFrom }}>
+                            {pdf.sender}
+                          </div>
+                        </div>
+                        <FaFilePdf color="red" size={50} />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td style={tdStyleBase}>Belum ada dokumen</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <table style={tableStyle}>
+          <tbody>
+            {lists.length ? (
+              lists.map((pdf, index) => (
+                <tr
+                  key={index}
+                  onMouseEnter={() => setHoveredRowIndex(index)}
+                  onMouseLeave={() => setHoveredRowIndex(null)}
+                  onClick={() => handleRowClick(pdf)} // Add onClick handler
                 >
-                  <div
-                    style={{
-                      ...tdItemStyle,
-                      ...tdStatus,
-                      backgroundColor: statusColor(pdf.status),
-                    }}
+                  <td
+                    style={
+                      hoveredRowIndex === index ? tdStyleHovered : tdStyleBase
+                    }
                   >
-                    {mappingStatusText[pdf.status]}
-                  </div>
-                  <div // details
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      margin: "10px 0px",
-                    }}
-                  >
-                    <div>
-                      <div style={{ ...tdItemStyle, ...tdName }}>
-                        {pdf.project_name + " - " + pdf.name}
-                      </div>
-                      <div style={{ ...tdItemStyle, ...tdDate }}>
-                        {formatDate(pdf.date)}
-                      </div>
-                      <div style={{ ...tdItemStyle, ...tdFrom }}>
-                        {pdf.sender}
-                      </div>
+                    <div
+                      style={{
+                        ...tdItemStyle,
+                        ...tdStatus,
+                        backgroundColor: statusColor(pdf.status),
+                      }}
+                    >
+                      {mappingStatusText[pdf.status]}
                     </div>
-                    <FaFilePdf color="red" size={50} />
-                  </div>
-                </td>
+                    <div // details
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        margin: "10px 0px",
+                      }}
+                    >
+                      <div>
+                        <div style={{ ...tdItemStyle, ...tdName }}>
+                          {pdf.project_name + " - " + pdf.name}
+                        </div>
+                        <div style={{ ...tdItemStyle, ...tdDate }}>
+                          {formatDate(pdf.date)}
+                        </div>
+                        <div style={{ ...tdItemStyle, ...tdFrom }}>
+                          {pdf.sender}
+                        </div>
+                      </div>
+                      <FaFilePdf color="red" size={50} />
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td style={tdStyleBase}>Belum ada dokumen</td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td style={tdStyleBase}>Belum ada dokumen</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
@@ -243,6 +363,7 @@ const tableStyle: CSSProperties = {
 };
 
 const tdStyleBase: CSSProperties = {
+  height: 200,
   verticalAlign: "top",
   backgroundColor: "#ffffff",
   color: "#2c3e50",
