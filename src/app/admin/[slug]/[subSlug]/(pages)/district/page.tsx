@@ -44,12 +44,12 @@ const DistrictList = () => {
 
   return (
     <div style={containerStyle}>
-      <h1 style={headerStyle}>Kelurahan</h1>
+      <h1 style={headerStyle}>Desa</h1>
       <table style={tableStyle}>
         <thead>
           <tr>
             <th style={tdStyleBase}>No</th>
-            <th style={tdStyleBase}>Nama Kelurahan</th>
+            <th style={tdStyleBase}>Nama Desa</th>
             <th style={tdStyleBase}>Total Dokumen</th>
           </tr>
         </thead>
