@@ -17,7 +17,7 @@ const Sidebar = () => {
       icon: <FaHome size={20} color="white" style={{ margin: "0 10px" }} />,
       path: "/admin/dashboard",
       subItems: [
-        { label: "Kelurahan", path: "/district" },
+        { label: "Desa", path: "/district" },
         { label: "Dokumen", path: "/documents" },
       ],
     },

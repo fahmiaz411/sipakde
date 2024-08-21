@@ -19,7 +19,7 @@ const Dashboard = () => {
   // Example data
   const stats = [
     {
-      label: "Toltal Kelurahan",
+      label: "Total Desa",
       value: dashboardData?.districts,
       color: "#853fb5",
       path: "/admin/dashboard/district",
