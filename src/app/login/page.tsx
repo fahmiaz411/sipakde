@@ -23,32 +23,6 @@ interface User {
   password: string;
 }
 
-const users = [
-  {
-    id: 1,
-    username: "kec.cariu",
-    email: "kec.cariu@sipakde.go.id",
-    name: "Kec. Cariu",
-    role: "admin",
-    password: "$2a$10$Oph79Yz4BouwaPksQLvzbOh9lWmQ2MFQlQaxf062Se5SjNuY3pzY.",
-  },
-  {
-    id: 2,
-    username: "kel.babakanraden",
-    email: "kel.babakanraden@sipakde.go.id",
-    name: "Kel. Babakan Raden",
-    role: "user",
-    password: "$2a$10$Wk.lc0AZ0Mpl3ow3t2XjMesZ70N/cabxt6Q9FZmPzaC4vjceD1ynK",
-  },
-];
-
-const userMapping: { [key: string]: number } = {
-  "kec.cariu": 0,
-  "kec.cariu@sipakde.go.id": 0,
-  "kel.babakanraden": 1,
-  "kel.babakanraden@sipakde.go.id": 1,
-};
-
 export default function Page() {
   const { innerWidth } = useGlobalContext();
 
@@ -131,14 +105,6 @@ function Form() {
       if (!usernameOrEmail || !password) {
         setLoginMesage({
           message: "Username or password cannot be empty.",
-          color: "red",
-        });
-        return;
-      }
-      const index = userMapping[usernameOrEmail];
-      if (index === undefined) {
-        setLoginMesage({
-          message: "Username or password is incorrect.",
           color: "red",
         });
         return;
