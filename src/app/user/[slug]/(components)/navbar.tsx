@@ -7,7 +7,8 @@ import { MdArrowDropDown } from "react-icons/md";
 
 const Navbar: React.FC = () => {
   const router = useRouter();
-  const { setIsLogin, userData, setUserData } = useGlobalContext();
+  const { setIsLogin, userData, setUserData, toastDevelopment } =
+    useGlobalContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
       </div>
       <div style={navItemsStyle}>
         <div style={{ margin: "0 10px" }}>{userData?.name}</div>
-        <div style={userConfigStyle}>
+        <div style={userConfigStyle} onClick={toastDevelopment}>
           <div style={userIconStyle}>
             <FaBell size={20} color="#fff" />
             <MdArrowDropDown size={24} color="#fff" />
