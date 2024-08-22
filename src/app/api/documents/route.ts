@@ -104,7 +104,7 @@ export async function POST(req: Request, res: Response) {
     await writeFile(path.join(filePath, filename), buffer);
 
     // Create the link to the uploaded file
-    const pdfLink = `/storage/${filename}`;
+    const pdfLink = `/files/${filename}`;
 
     const insertStmt = db.prepare(`
         INSERT INTO documents (

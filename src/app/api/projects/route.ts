@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     await writeFile(path.join(filePath, filename), buffer);
 
     // Create the link to the uploaded file
-    const pdfLink = `/storage/${filename}`;
+    const pdfLink = `/files/${filename}`;
 
     const date = new Date().toISOString();
 
