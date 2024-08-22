@@ -9,7 +9,7 @@ export async function GET(request: Request) {
         SELECT 
             id, 
             name, 
-            (SELECT COUNT(id) FROM documents WHERE sender_id = u.id) as documents 
+            (SELECT COUNT(*) FROM documents WHERE sender_id = u.id) as documents 
         FROM users as u WHERE role = 'user'
         ORDER BY id DESC`
     )

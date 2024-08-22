@@ -16,9 +16,9 @@ export async function GET(request: Request) {
   const dashboard = db
     .prepare(
       `SELECT 
-        (SELECT COUNT(id) FROM projects) as projects, 
-        (SELECT COUNT(id) FROM documents WHERE sender_id = ?) as documents,
-        (SELECT COUNT(id) FROM documents WHERE sender_id = ? AND status = 'pending') as documents_pending
+        (SELECT COUNT(*) FROM projects) as projects, 
+        (SELECT COUNT(*) FROM documents WHERE sender_id = ?) as documents,
+        (SELECT COUNT(*) FROM documents WHERE sender_id = ? AND status = 'pending') as documents_pending
     `
     )
     .get(id, id);
