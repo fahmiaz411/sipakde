@@ -154,6 +154,10 @@
 
 /* Media Queries */
 @media (min-width: 768px) {
+  .title {
+    margin-top: 70px;
+  }
+
   .container {
     flex-direction: row;
     gap: 20px;
