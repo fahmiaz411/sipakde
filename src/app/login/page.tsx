@@ -181,7 +181,7 @@ function Form() {
 
   return (
     <form
-      action={"#"}
+      action={handleLogin}
       style={{
         //   backgroundColor: "red",
         width: "100%",
@@ -232,7 +232,6 @@ function Form() {
         placeholder="Masukkan password"
       />
       <button // login button
-        onClick={handleLogin}
         style={{
           margin: "10px 0",
           padding: "10px 50px",
@@ -241,7 +240,7 @@ function Form() {
           color: "white",
           borderRadius: 5,
         }}
-        type="button"
+        type="submit"
       >
         Login Akun
       </button>
