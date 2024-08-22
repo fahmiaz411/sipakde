@@ -3,7 +3,7 @@ import db from "./db";
 import fs from "fs";
 
 export function execMigrations() {
-  db.exec("PRAGMA cache_size = -1");
+  db.pragma("cache_size = 0");
   // users
   db.exec(`
         CREATE TABLE IF NOT EXISTS users (

@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   // Get all projects if no ID is provided
+  db.pragma("cache_size = 0");
+
   const dashboard = db
     .prepare(
       `SELECT 
