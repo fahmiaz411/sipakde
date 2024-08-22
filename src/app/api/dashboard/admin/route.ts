@@ -3,18 +3,19 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   // Get all projects if no ID is provided
-  db.pragma("cache_size = 0");
+  const role = "user";
+  const status = "pending";
 
   const dashboard = db
     .prepare(
       `SELECT 
-        (SELECT COUNT(*) FROM users WHERE role = 'user') as districts,
+        (SELECT COUNT(*) FROM users WHERE role = ?) as districts,
         (SELECT COUNT(*) FROM projects) as projects, 
         (SELECT COUNT(*) FROM documents) as documents,
-        (SELECT COUNT(*) FROM documents WHERE status = 'pending') as documents_pending
+        (SELECT COUNT(*) FROM documents WHERE status = ?) as documents_pending
     `
     )
-    .get();
+    .get(role, status);
   return NextResponse.json({
     code: 200,
     message: "",

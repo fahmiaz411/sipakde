@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   // Get all projects if no ID is provided
+  const role = "user";
+
   const projects = db
     .prepare(
       `
@@ -10,10 +12,10 @@ export async function GET(request: Request) {
             id, 
             name, 
             (SELECT COUNT(*) FROM documents WHERE sender_id = u.id) as documents 
-        FROM users as u WHERE role = 'user'
+        FROM users as u WHERE role = ?
         ORDER BY id DESC`
     )
-    .all();
+    .all(role);
   return NextResponse.json({
     code: 200,
     message: "",
