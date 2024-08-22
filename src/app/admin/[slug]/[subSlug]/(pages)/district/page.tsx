@@ -25,7 +25,7 @@ const DistrictList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/districts`);
+        const res = await fetch(`/api/districts?role=user`);
         if (res.status >= 400) {
           console.error("Error fetching user data:", res.status);
           return;

@@ -51,7 +51,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/dashboard/admin?id=${userData?.id}`);
+        const res = await fetch(
+          `/api/dashboard/admin?role=user&status=pending`
+        );
         if (res.status >= 400) {
           console.error("Error fetching user data:", res.status);
           return;

@@ -3,7 +3,16 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   // Get all projects if no ID is provided
-  const role = "user";
+  const url = new URL(request.url);
+
+  const role = url.searchParams.get("role");
+
+  if (!role) {
+    return NextResponse.json(
+      { error: "Missing role parameter" },
+      { status: 400 }
+    );
+  }
 
   const projects = db
     .prepare(
