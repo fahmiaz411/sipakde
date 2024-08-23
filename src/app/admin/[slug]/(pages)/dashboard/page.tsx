@@ -13,7 +13,7 @@ interface Dashboard {
 
 const Dashboard = () => {
   const router = useRouter();
-  const { userData } = useGlobalContext();
+  const { userData, innerWidth } = useGlobalContext();
   const [dashboardData, setDashboardData] = useState<Dashboard | null>(null);
 
   // Example data
@@ -72,7 +72,15 @@ const Dashboard = () => {
 
   return (
     <div style={dashboardContainerStyle}>
-      <h1 style={headerStyle}>Halaman Dashboard</h1>
+      <h1
+        style={
+          innerWidth > 768
+            ? headerStyle
+            : { ...headerStyle, textAlign: "center" }
+        }
+      >
+        Halaman Dashboard
+      </h1>
       <div style={statsGridStyle}>
         {stats.map((stat, index) => (
           <div
