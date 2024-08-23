@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
         </div>
         <div style={userConfigStyle}>
           <div style={userIconStyle} onClick={handleDropdownToggle}>
-            <FaUser size={24} color="#fff" />
+            <FaUser size={20} color="#fff" />
             <MdArrowDropDown size={24} color="#fff" />
           </div>
           {dropdownOpen && (
