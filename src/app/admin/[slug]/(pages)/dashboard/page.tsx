@@ -105,9 +105,10 @@ const Dashboard = () => {
 export default Dashboard;
 
 const dashboardContainerStyle: React.CSSProperties = {
-  marginTop: 50,
+  // marginTop: 50,
   padding: "5vw",
-  // backgroundColor: "#e3f2fd", // Light blue background
+  paddingTop: "20vw",
+  backgroundColor: "#e3f2fd", // Light blue background
   minHeight: "100vh",
   width: "100vw",
   fontFamily: "sans-serif",

@@ -339,8 +339,9 @@ const addButtonStyle: CSSProperties = {
 };
 
 const containerStyle: CSSProperties = {
-  marginTop: "50px",
+  // marginTop: "50px",
   padding: "5vw",
+  paddingTop: "20vw",
   backgroundColor: "#f4f6f9",
   minHeight: "100vh",
   width: "100vw",
