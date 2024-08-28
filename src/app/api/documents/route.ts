@@ -2,10 +2,8 @@ import db from "@/lib/db";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { Fields, Files, IncomingForm } from "formidable";
 import { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuidv4 } from "uuid";
-import { createRouter } from "next-connect";
 import { writeFile } from "fs/promises";
 
 export async function GET(request: Request) {

@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaUser, FaCog, FaSignOutAlt, FaBell } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
-import { ToastContainer } from "react-toastify";
 
 const Navbar: React.FC = () => {
   const router = useRouter();

@@ -8,7 +8,6 @@ import {
   ReactNode,
   useEffect,
 } from "react";
-import { toast, ToastContainer, Zoom } from "react-toastify";
 
 interface GlobalContextProps {
   contextLoading: boolean;
